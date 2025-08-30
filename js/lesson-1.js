@@ -1,93 +1,85 @@
-// / Запропонуйте користувачу ввести число за допомогою prompt().
-// // Збережіть введене значення у змінну number.
-// Перевірте, чи дорівнює змінна number числу 10:
-//    Якщо так – виведіть повідомлення 'Вірно' у alert().
-//    Якщо ні – виведіть 'Невірно'.
-
-// Підказка: prompt завжди повертає рядок (String), тому перед перевіркою
-// // перетворіть значення на число за допомогою Number().
-// const number = prompt('Введіть число');
-// if (Number(number) === 10) {
-//   alert('Вірно');
-// } else {
-//   alert('Невірно');
+// function foo() {
+//   const arg = Array.from(arguments);
+//   console.log(Array.isArray(arg));
+//   console.log(foo[0]);
 // }
+// foo(1, 7, 5);
+// console.log(foo[0]);
 
-// У змінній min лежить випадкове число від 0 до 59.
-// Визначте, в яку чверть години потрапляє
-// це число (у першу, другу, третю чи четверту).
-// Виведіть в alert відповідне повідомлення, наприклад:
-// "10 входить в першу чверть"
+// Напиши функцію add для складання довільнох кількості аргументів (чисел)
 
-// const min = Math.floor(Math.random() * (59 - 0) + 0);
-// if (min <= 15) {
-//   alert(`${min} входить в першу чверть`);
-// } else if (min <= 30) {
-//   alert(`${min} входить в другу чверть`);
-// } else if (min <= 45) {
-//   alert(`${min} входить в третю чверть`);
-// } else {
-//   alert(`${min} входить в четверту чверть`);
-// }
-
-// console.log(min);
-//  else{
-//     alert (`${min} входить в четверту чверть`);
-// }
-
-// Отримуйте від користувача число (кількість хвилин) через prompt
-// і виводьте у консоль рядок у форматі годин та хвилин.
-// Приклад: користувач вводить в prompt '70' -> в консолі відобразиться '01:10'.
-// Корисне посилання для відображення годин та хвилин у потрібному форматі ('01' замість '1'):
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/padStart#examples
-
-// const num = Number(prompt('Введіть кількість секунд:'));
-// const hours = Math.floor(num / 60);
-// const minutes = Math.floor((num % 60) / 60);
-// const seconds = num % 60;
-
-// const changeHours = String(hours).padStart(2, '0');
-// const changeMinutes = String(minutes).padStart(2, '0');
-// const changeSeconds = String(seconds).padStart(2, '0');
-
-// console.log(`${changeHours}:${changeMinutes}:${changeSeconds}`);
-
-// const num = 507;
-// const hrivna = Math.floor(num / 100);
-// const cent = num % 100;
-// const changeHrivna = String(hrivna).padStart(2, '0');
-// const chengeCent = String(cent).padStart(2, '0');
-// console.log(`${changeHrivna}грн ${chengeCent} коп`);
-
-// / Напишіть код, який запитуватиме у користувача
-// логін за допомогою prompt і виводить результат в консоль браузера
-
-// Після цього додайте перевірку введеного користувачем значення:
-// Якщо відвідувач вводить "Адмін",
-// то prompt запитує пароль (не забудьте зберігти його у змінну для подальшої перевірки).
-// Якщо нічого не ввели або натиснули Cancel,
-// Вивести в alert строку "Скасовано"
-// В іншому випадку вивести в alert рядок "Я вас не знаю"
-
-// Пароль перевіряти так:
-// Якщо введено пароль "Я головний",
-// то вивести в alert рядок "Добрий день!",
-// в іншому випадку вивести в alert рядок "Невірний пароль!"
-
-// const login = prompt('Введіть логін');
-
-// if (login === null || login === '') {
-//   alert('Скасовано');
-// } else if (login.toLowerCase() === 'адмін') {
-//   const password = prompt('Введіть пароль');
-
-//   if (password && password.toLowerCase() === 'я головний') {
-//     alert('Добрий день!');
-//   } else {
-//     alert('Невірний пароль!');
+// function add() {
+//   console.log(arguments);
+//   let total = 0;
+//   for (const num of arguments) {
+//     console.log(num);
 //   }
-// } else {
-//   alert('Я вас не знаю');
+// }
+// add();
+
+// console.log(add(1, 2, 3, 4));
+// console.log(add(7, 5, 5, 4));
+// console.log(add(1, 18, -3, 100));
+
+// Функція createReversedArray() може приймати довільну кількість аргументів.
+//  Доповни код функції так, щоб вона повертала масив усіх аргументів,
+//   але в масиві вони повинні йти у зворотному порядку. Тобто,
+//    при виклику createReversedArray(1, 2, 3), функція має повернути масив [3, 2, 1].
+//    Використовуй цикл або метод масиву createReversedArray
+//    який застосовується до масиву і результатом роботи повертає новий масив з елементами у зворотньому порядку.
+
+// function createReversedArray() {
+//   const arr = Array.from(arguments);
+//   return arr.reverse();
+// }
+// // console.log(createReversedArray(1, 2, 3));
+// function greet(username = 'Guest') {
+//   console.log(`Hello, ${username}!`);
 // }
 
-// Використайте цикл while, щоб вивести в console всі числа від 0 до 20 включно.
+// greet('Jacob'); // "Hello, Jacob!"
+// greet(); // "Hello, Guest!"
+
+// function count(from, to, step = 1) {
+//   console.log(`from: ${from}, to: ${to}, step: ${step}`);
+
+//   for (let i = from; i <= to; i += step) {
+//     // ...
+//   }
+// }
+
+// count(5, 10, 1); // "from: 1, to: 15, step: 4"
+// count(1, 15); // "from: 1, to: 15, step: 1"
+// console.log(count);
+
+// Функція calculateTax(amount, taxRate) оголошує два параметри:
+
+// amount - число, сума від якої потрібно обчислити податок. Обов'язковий параметр.
+// taxRate - число, податкова ставка. Необов'язковий параметр.
+//  За замовчуванням його значення має бути 0.2.
+// Доповни код функції так, щоб вона повертала суму податку -
+// результат множення суми на податкову ставку.
+
+// function calculateTax(amount, taxRate = 0.2) {
+//   return amount * taxRate;
+// }
+// console.log(calculateTax(100, 0.1));
+
+// function multiply(x, y, z) {
+//   console.log(x * y * z);
+// }
+function one() {
+  console.log('one');
+}
+
+function two() {
+  console.log('to');
+}
+
+function foo() {
+  console.log('foo');
+  one();
+  two();
+}
+
+foo();
