@@ -258,34 +258,38 @@
 // delete(name) - видаляє контакт з заданим ім'ям;
 // updateName(oldName, newName) - зиінює ім'я контакта;
 
-// const phonebook = {
-//   contacts: [],
-//   add(data) {},
-//   list() {},
-//   filtered(category) {},
-//   delete(name) {},
-//   updateName(oldName, newName) {},
+const phonebook = {
+  contacts: [],
+  add(data) {},
+  list() {},
+  filtered(category) {},
+  delete(name) {},
+  updateName(oldName, newName) {},
 
-//   generateId() {
-//     return '#' + Math.random().toString(36).substr(2, 9);
-//   },
-//   getDate() {
-//     return Date.now();
-//   },
-// };
+  generateId() {
+    return '#' + Math.random().toString(36).substr(2, 9);
+  },
+  getDate() {
+    return Date.now();
+  },
+};
 
-// phonebook.add({
-//   name: 'Mango',
-//   email: 'mango@mail.com',
-//   category: 'friends',
-// });
+function add(data) {
+  if (!data.name || !data.email) return 'default';
+}
 
-// phonebook.add({
-//   name: 'Poly',
-//   email: 'poly@hotmail.com',
-// });
-// phonebook.add({
-//   name: 'Katy',
-//   email: 'katy@hotmail.com',
-//   category: 'friends',
-// });
+phonebook.add({
+  name: 'Mango',
+  email: 'mango@mail.com',
+  category: 'friends',
+});
+
+phonebook.add({
+  name: 'Poly',
+  email: 'poly@hotmail.com',
+});
+phonebook.add({
+  name: 'Katy',
+  email: 'katy@hotmail.com',
+  category: 'friends',
+});
