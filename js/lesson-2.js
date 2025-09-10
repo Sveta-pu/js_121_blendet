@@ -258,38 +258,513 @@
 // delete(name) - видаляє контакт з заданим ім'ям;
 // updateName(oldName, newName) - зиінює ім'я контакта;
 
-const phonebook = {
-  contacts: [],
-  add(data) {},
-  list() {},
-  filtered(category) {},
-  delete(name) {},
-  updateName(oldName, newName) {},
+// const phonebook = {
+//   contacts: [],
+//   add(data) {},
+//   list() {},
+//   filtered(category) {},
+//   delete(name) {},
+//   updateName(oldName, newName) {},
 
-  generateId() {
-    return '#' + Math.random().toString(36).substr(2, 9);
-  },
-  getDate() {
-    return Date.now();
-  },
-};
+//   generateId() {
+//     return '#' + Math.random().toString(36).substr(2, 9);
+//   },
+//   getDate() {
+//     return Date.now();
+//   },
+// };
 
-function add(data) {
-  if (!data.name || !data.email) return 'default';
-}
+// function add(data) {
+//   if (!data.name || !data.email) return 'default';
+// }
 
-phonebook.add({
-  name: 'Mango',
-  email: 'mango@mail.com',
-  category: 'friends',
-});
+// phonebook.add({
+//   name: 'Mango',
+//   email: 'mango@mail.com',
+//   category: 'friends',
+// });
 
-phonebook.add({
-  name: 'Poly',
-  email: 'poly@hotmail.com',
-});
-phonebook.add({
-  name: 'Katy',
-  email: 'katy@hotmail.com',
-  category: 'friends',
-});
+// phonebook.add({
+//   name: 'Poly',
+//   email: 'poly@hotmail.com',
+// });
+// phonebook.add({
+//   name: 'Katy',
+//   email: 'katy@hotmail.com',
+//   category: 'friends',
+// });
+
+// починаємо з масиву обєктів
+// ми можемо згрупувати в одне місце однотипні обєкти
+// як ми можемо з цим працювати
+// 1) Пщшук друга за іменем створюємо функцію та зробимо перебор через фор оф
+// фор ( айтем - це є елемент масиву оф вказуємо назву масиву для перебору)
+
+// const friends = [
+//   { name: 'Ross', online: false },
+//   { name: 'Joey', online: true },
+//   { name: 'Luda', online: false },
+//   { name: 'Sacha', online: true },
+//   { name: 'MachA', online: false },
+// ];
+
+// function findFrendName(array, findFrendName) {
+//   for (const item of array) {
+//     if (item.name.toLowerCase() === findFrendName.toLowerCase()) {
+//       console.log(item);
+//       return item;
+//     }
+//   }
+//   return 'not found';
+// }
+
+// findFrendName(friends, '');
+// console.table(findFrendName(friends, 'sacha', 'luda'));
+
+// // Для того шоб отримати фмена всіх друзів фиводимо функцію
+
+// function getAllNames(array) {
+//   const names = [];
+//   for (const friend of array) {
+//     // console.log(friend.name);
+//     names.push(friend.name);
+//   }
+//   return names;
+// }
+// console.log(getAllNames(friends));
+
+// // Отримуємо імена тільки тих друзів шо не онлайн
+
+// function getOnlineFriends(array) {
+//   const onlineFrends = [];
+//   for (const toto of array) {
+//     console.log(toto.online);
+//     if (toto.online === false) {
+//       onlineFrends.push(toto.name);
+//     }
+//   }
+//   return onlineFrends;
+// }
+
+// console.log(getOnlineFriends(friends));
+
+// потрвбно написати фенкцію шо пиймає масив обєктів та рядок з назвою каменя
+// функція рахує та повертає загальну ватість
+// з таким імям ціною та кількістю з обєкта
+
+// const stones = [
+//   { name: 'Смарагд', price: 12300, quantity: 4 },
+//   { name: 'Діамант', price: 35500, quantity: 4 },
+//   { name: 'Сапфір', price: 11300, quantity: 4 },
+//   { name: 'Бреліант', price: 1300, quantity: 4 },
+//   { name: 'Смарагд', price: 18300, quantity: 4 },
+// ];
+
+// function calcTotalPrice(stones, stoneName) {
+//   let sum = 0;
+//   for (const stone of stones) {
+//     if (stone.name === stoneName) {
+//       sum += stone.price * stone.quantity;
+//     }
+//   }
+//   return sum;
+// }
+
+// console.log(calcTotalPrice(stones, 'Смарагд'));
+
+// Обєкти
+
+// методи обєкта
+// Доступ до елемента через this
+// зміна за посиланням
+// можна в тіло обєкта савити функцію
+// яка буде звязувати тіло обєкта та виуконувати якісь операції
+// Як ми сожкмо савити метод в обʼєкті в самому обєті ти ме пишкмо слово
+// функція імя круглі дужки фігурні дужки  Як викликати
+//  запк=ус ити фенкцієб в середині обєкту Вона знаходиться в обєкті ми
+// поза обєктом зветраємося до обєкта обєкту та через крапку називаємо нашу функцію
+// та звпускаємо круглі дужки
+
+// const firstObject = {
+//   name: 'Sveta',
+//   age: 35,
+//   drink: ['water', 'tea', 'coffee'],
+//   myFunction(newAge) {
+//     this.age = newAge; // ✅ головна правка
+//   },
+// };
+
+// console.log(firstObject); // age: 35
+// firstObject.myFunction(20);
+// console.log(firstObject.age); // 20
+
+// const secondObject = {
+//   name: 'Asaf',
+//   age: 0.8,
+//   drink: ['milk', 'water'],
+// };
+
+// secondObject.funcfinMom = firstObject.myFunction;
+// console.log(secondObject.funcfinMom);
+// console.log(secondObject);
+// secondObject.funcfinMom(0.9);
+
+// console.log(secondObject.age); // 0.9 ✅ тепер змінився secondObject
+
+// 📑 Таблиця поведінки this
+
+// Де викликана функція	Приклад	Хто такий this
+// Метод в об’єкті	js const obj = { name: "Sveta", say() { console.log(this.name); } }; obj.say();	this = obj → виведе "Sveta"
+// Позичений метод	js const obj2 = { name: "Asaf" }; obj2.say = obj.say; obj2.say();	this = obj2 → виведе "Asaf"
+// Звичайна функція (не метод)	js function f() { console.log(this); } f();	у strict mode → undefined
+// без strict → window (в браузері)
+// Стрілкова функція	js const obj = { name: "Sveta", arrow: () => console.log(this) }; obj.arrow();	this не перемикається, а береться з оточення, де створена функція. Тут → window або undefined у strict
+// bind / call / apply	js const f = obj.say.bind(obj2); f();	this примусово = obj2
+// 💡 Пам’ятка
+
+// this залежить не від того, де функція написана, а від того, як її викликали.
+
+// У методах через крапку (obj.method()) він показує на цей об’єкт.
+
+// У стрілкових функціях він не перемикається і лишається з контексту створення.
+
+// bind/call/apply дозволяють вручну підставити, хто буде this.
+// const user = {
+//   name: 'Sveta',
+//   sayHi() {
+//     console.log(this.name);
+//   },
+// };
+
+// user.sayHi();
+
+// const user = {
+//   name: 'Sveta',
+//   sayHi() {
+//     console.log(this.name);
+//   },
+// };
+// console.log(sayHi);
+
+// const fn = user.sayHi;
+// fn();
+// 🔹 Навіщо потрібен this
+
+// У JavaScript this — це динамічне посилання на "той об’єкт, який викликав метод".
+
+// 1. Щоб одна й та сама функція могла працювати з різними об’єктами
+
+// function sayHi() {
+//   console.log(this.name);
+// }
+
+// const user1 = { name: 'Sveta', sayHi };
+// const user2 = { name: 'Asaf', sayHi };
+
+// user1.sayHi(); // "Sveta"
+// user2.sayHi(); // "Asaf"
+
+// Без this довелося б у кожній функції вручну прописувати ім’я конкретного об’єкта.
+
+// У сучасному JS часто використовують класи. Там this посилається на створений об’єкт:
+
+// class Car {
+//   constructor(model) {
+//     this.model = model;
+//   }
+//   showModel() {
+//     console.log(this.model);
+//   }
+// }
+
+// const bmw = new Car('BMW X5');
+// bmw.showModel(); // "BMW X5"
+
+// 📌 Підсумок
+
+// this потрібен для:
+
+// Доступу до властивостей/методів об’єкта зсередини цього ж об’єкта.
+
+// Можливості використовувати одну й ту ж функцію з різними об’єктами.
+
+// Роботи з класами та конструкторами.
+
+// 🔹 Spread (...)
+
+// Розгортає (розкладає) елементи масиву чи об’єкта.
+
+// Приклад — створення масиву:
+// const arr1 = [1, 2, 3];
+// const arr2 = [4, 5];
+
+// const merged = [...arr1, ...arr2];
+// console.log(merged); // [1, 2, 3, 4, 5]
+
+// Приклад — створення об’єкта:
+// const obj1 = { name: "Sveta" };
+// const obj2 = { age: 35 };
+
+// const user = { ...obj1, ...obj2 };
+// console.log(user); // { name: "Sveta", age: 35 }
+
+// 🔹 Rest (...)
+
+// Збирає залишкові елементи у масив.
+
+// Приклад — залишкові параметри:
+// function sum(...numbers) {
+//   return numbers.reduce((acc, n) => acc + n, 0);
+// }
+
+// console.log(sum(1, 2, 3, 4)); // 10
+
+// Приклад — збір частини аргументів:
+// const [first, ...rest] = [10, 20, 30, 40];
+// console.log(first); // 10
+// console.log(rest);  // [20, 30, 40]
+
+// 📌 Важливе
+
+// Spread = розкласти ("розгорнути")
+
+// Rest = зібрати ("зібрати все, що лишилось")
+
+// Обидва пишуться однаково ..., різниця тільки в контексті:
+
+// в аргументах функції → rest
+
+// у масивах / об’єктах → spread
+
+// function foo(a, b, ...rest) {
+//   console.log(a, b);
+//   console.log(rest);
+// }
+
+// foo(1, 2, 3, 5, 6);
+// ...rest- для групування повинен бути останнім
+
+// function foo(...lalala) {
+//   console.log(lalala);
+// }
+
+// foo({ x: 11, y: 2 });
+
+// const arr = [1, ...[4000, 100, 700], ...[70, 1, 2, 3], 800];
+// console.log(arr);
+// // перед масивом який я зочу розгорнути ставимо ...
+// бере та розгортає
+
+// const temps = [5, 10, 100, 17, 25];
+// console.log(Math.max(...temps)); //100//
+// // console.log(Math.min(...temps)); //5//
+
+// const array = ['mama', 'world', 'hello'];
+
+// function foo(a, b, c) {
+//   console.log('a', b);
+//   console.log('b', b);
+//   console.log('c', c);
+// }
+
+// foo(...array); //mama world
+
+// ****
+// Створення масиву і тип за посиланням
+// *****
+
+// const a = [1, 2, 3];
+// const b = [...a];
+
+// a[0] = 200;
+// b[1] = 11;
+// console.log('a', a); //a (3) [200, 2, 3]
+// console.log('b', b); /// b (3) [1, 11, 3]
+
+// 🔹 1. Примітивні типи (копіюються за значенням)
+
+// string, number, boolean, null, undefined, symbol, bigint
+
+// При копіюванні створюється нова незалежна змінна:
+
+// let a = 5;
+// let b = a;   // копія значення
+// b = 10;
+
+// console.log(a); // 5  (не змінився)
+// console.log(b); // 10
+
+// 🔹 2. Складні типи (копіюються за посиланням)
+
+// object, array, function
+
+// При копіюванні копіюється посилання на ту ж саму область пам’яті, а не новий об’єкт:
+
+// const arr1 = [1, 2, 3];
+// const arr2 = arr1;   // копія посилання
+
+// arr2.push(4);
+
+// console.log(arr1); // [1, 2, 3, 4]  ← змінився і arr1!
+// console.log(arr2); // [1, 2, 3, 4]
+
+// Тобто arr1 і arr2 тепер «дивляться» на один і той самий масив у пам’яті.
+
+// 🔹 Як зробити справжню копію масиву / об’єкта
+// Поверхнева копія:
+// const arr1 = [1, 2, 3];
+// const arr2 = [...arr1];  // spread
+// arr2.push(4);
+
+// console.log(arr1); // [1, 2, 3]
+// console.log(arr2); // [1, 2, 3, 4]
+
+// Об’єкт:
+// const obj1 = { name: "Sveta", age: 35 };
+// const obj2 = { ...obj1 };
+
+// obj2.age = 40;
+
+// console.log(obj1.age); // 35
+// console.log(obj2.age); // 40
+
+// 📌 Важливо: spread робить поверхневу копію. Якщо всередині є вкладені об’єкти, вони все одно лишаються за посиланням.
+
+// const user1 = { name: "Sveta", info: { city: "Kyiv" } };
+// const user2 = { ...user1 };
+
+// user2.info.city = "Lviv";
+
+// console.log(user1.info.city); // "Lviv"  ← вкладений об’єкт лишився спільним
+
+// *
+// *поєднаємо декілька масивів в один
+// *
+
+// const oneArrey = [1, 2, 2];
+// const towAreey = [2, 3, 4];
+// const sreArrey = [5, 6, 7];
+
+// const oll = [...oneArrey, ...sreArrey, ...sreArrey];
+// console.log(oll);
+
+// const objA = { x: 1, z: 2 };
+// const objB = { z: 1, x: 0 };
+
+// const objC = {
+//   ...objA, // x:1, z:2
+//   p: 's', // x:1, z:2, p:"s"
+//   ...objB,
+//   z: 800,
+// };
+// // console.log(objC);
+// можна переприсвоювати нові значення перезатирвж нові значення
+
+// ****
+// Оновлюємо налаштування користувача
+// ****
+// Для еьог нам потрібно створити новий обєкт в якому через трикрапку
+// перезапишиеться початкові значкння з налаштування о труга трикрапка
+// залишить ті налаштування шо вибрав користувач
+// ми маємо обєкт
+
+// const defaultSetings = {
+//   name: 'user',
+//   age: 0,
+//   status: 'online',
+// };
+
+// const userSetings = {
+//   name: 'Sveta',
+//   age: 35,
+//   drink: ['sok', 'water'],
+// };
+
+// const finaSetings = {
+//   ...defaultSetings,
+//   ...userSetings,
+// };
+// console.log(finaSetings);
+
+// const Transaction = {
+//   DEPOSIT: 'deposit',
+//   WITHDRAW: 'withdraw',
+// };
+
+// const account = {
+//   // поточний баланс
+//   balance: 0,
+
+//   // історія транзакцій
+//   transactions: [],
+
+//   // створює та повертає об’єкт транзакції
+//   createTransaction(amount, type) {
+//     return {
+//       id: Date.now(), // унікальний id
+//       amount,
+//       type,
+//     };
+//   },
+
+//   // поповнення рахунку
+//   deposit(amount) {
+//     this.balance += amount;
+//     const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
+//     this.transactions.push(transaction);
+//   },
+
+//   // зняття коштів
+//   withdraw(amount) {
+//     if (amount > this.balance) {
+//       console.log('Недостатньо коштів');
+//       return;
+//     }
+//     this.balance -= amount;
+//     const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
+//     this.transactions.push(transaction);
+//   },
+
+//   // повертає баланс
+//   getBalance() {
+//     return this.balance;
+//   },
+
+//   // шукає транзакцію за id
+//   getTransactionDetails(id) {
+//     for (const item of this.transactions) {
+//       if (item.id === id) {
+//         return item;
+//       }
+//     }
+//     return 'Not found';
+//   },
+
+//   // повертає суму транзакцій певного типу
+//   getTransactionTotal(type) {
+//     let sum = 0;
+//     for (const item of this.transactions) {
+//       if (item.type === type) {
+//         sum += item.amount;
+//       }
+//     }
+//     return sum;
+//   },
+// };
+
+// account.deposit(1000);
+// account.deposit(500);
+// account.withdraw(30);
+// account.withdraw(500);
+
+// console.log(account.getBalance());
+// // 120
+
+// console.log(account.transactions);
+// // масив із 3 транзакцій
+
+// console.log(account.getTransactionTotal(Transaction.DEPOSIT));
+// // 150
+
+// console.log(account.getTransactionTotal(Transaction.WITHDRAW));
+// // 30
