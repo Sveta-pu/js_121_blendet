@@ -67,19 +67,19 @@
 
 // function multiply(x, y, z) {
 //   console.log(x * y * z);
+// // }
+// function one() {
+//   console.log('one');
 // }
-function one() {
-  console.log('one');
-}
 
-function two() {
-  console.log('to');
-}
+// function two() {
+//   console.log('to');
+// }
 
-function foo() {
-  console.log('foo');
-  one();
-  two();
-}
+// function foo() {
+//   console.log('foo');
+//   one();
+//   two();
+// }
 
-foo();
+// foo();
